@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import TextureScene from '@/blocks/Texture/TextureScene.svelte';
+const title = 'Texture';
+const description = 'Textureサンプル';
+---
+
+<BaseLayout title={title} description={description}>
+  <TextureScene client:load />
+</BaseLayout>

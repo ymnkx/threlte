@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import FirstScene from '@/blocks/First/FirstScene.svelte';
+const title = 'First Scene';
+const description = '';
+---
+
+<BaseLayout title={title} description={description}>
+  <FirstScene client:load />
+</BaseLayout>

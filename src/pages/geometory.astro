@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import GeometoryScene from '@/blocks/Geometory/GeometoryScene.svelte';
+const title = 'Geometory';
+const description = 'Geometoryサンプル';
+---
+
+<BaseLayout title={title} description={description}>
+  <GeometoryScene client:load />
+</BaseLayout>

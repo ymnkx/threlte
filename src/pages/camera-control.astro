@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import CameraControlScene from '@/blocks/CameraControl/CameraControlScene.svelte';
+const title = 'Camera Control';
+const description = 'Camera Controlサンプル';
+---
+
+<BaseLayout title={title} description={description}>
+  <CameraControlScene client:load />
+</BaseLayout>

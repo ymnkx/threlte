@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import PointsScene from '@/blocks/Points/PointsScene.svelte';
+const title = 'Camera Control';
+const description = 'Camera Controlサンプル';
+---
+
+<BaseLayout title={title} description={description}>
+  <PointsScene client:load />
+</BaseLayout>

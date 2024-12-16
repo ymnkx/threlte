@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import GsScene from '@/blocks/gs/GsScene.svelte';
+// import GsSample from '@/blocks/gs/GsSample.astro';
+const title = 'Camera Control';
+const description = 'Camera Controlサンプル';
+---
+
+<BaseLayout title={title} description={description}>
+  <GsScene client:load />
+  <!-- <GsSample /> -->
+</BaseLayout>

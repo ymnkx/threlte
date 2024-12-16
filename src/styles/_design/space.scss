@@ -1,0 +1,15 @@
+@use "@/styles/_develop/+.scss" as *;
+
+:root {
+  --space-inline: 1.5rem; // gutterでいいかも
+  --space-block: 3rlh;
+  --space-gap: 5rem;
+
+  @include min-screen(md) {
+    --space-inline: 3rem;
+  }
+
+  @include min-screen(lg) {
+    --space-inline: 4.5rem;
+  }
+}
