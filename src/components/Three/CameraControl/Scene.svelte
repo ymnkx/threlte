@@ -1,4 +1,5 @@
 <script lang="ts">
+  import ThreeCanvas from '@/components/Three/ThreeCanvas.svelte';
   import { T } from '@threlte/core';
   import { ContactShadows, Grid, Sky } from '@threlte/extras';
   import { Pane, Button, Checkbox } from 'svelte-tweakpane-ui';
@@ -10,35 +11,37 @@
   const initCameraLookAt: [number, number, number] = [0, 1, 0];
 </script>
 
-<Pane title="Control" position="fixed" y={10}>
-  <Button
-    title="Reset Camera"
-    on:click={() => {
-      $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
-    }}
+<ThreeCanvas>
+  <Pane title="Control" position="fixed" y={10}>
+    <Button
+      title="Reset Camera"
+      on:click={() => {
+        $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
+      }}
+    />
+    <Checkbox label="Top Camera" bind:value={$isTopCamera} />
+  </Pane>
+  <Sky elevation={1} />
+  <Grid
+    position.y={-0.001}
+    cellColor="#000000"
+    sectionColor="#ffffff"
+    sectionThickness={0}
+    fadeDistance={40}
+    cellSize={2}
   />
-  <Checkbox label="Top Camera" bind:value={$isTopCamera} />
-</Pane>
-<Sky elevation={1} />
-<Grid
-  position.y={-0.001}
-  cellColor="#000000"
-  sectionColor="#ffffff"
-  sectionThickness={0}
-  fadeDistance={40}
-  cellSize={2}
-/>
-<ContactShadows scale={10} blur={2} far={2.5} opacity={0.5} />
-<ObjectGruop />
+  <ContactShadows scale={10} blur={2} far={2.5} opacity={0.5} />
+  <ObjectGruop />
 
-{#if $isTopCamera}
-  <T.PerspectiveCamera
-    makeDefault
-    position={[0, 20, 0]}
-    on:create={({ ref }) => {
-      ref.lookAt(0, 1, 0);
-    }}
-  />
-{:else}
-  <Camera {initCameraPosition} {initCameraLookAt} />
-{/if}
+  {#if $isTopCamera}
+    <T.PerspectiveCamera
+      makeDefault
+      position={[0, 20, 0]}
+      on:create={({ ref }) => {
+        ref.lookAt(0, 1, 0);
+      }}
+    />
+  {:else}
+    <Camera {initCameraPosition} {initCameraLookAt} />
+  {/if}
+</ThreeCanvas>

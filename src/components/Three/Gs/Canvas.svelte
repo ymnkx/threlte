@@ -1,6 +1,6 @@
 <script>
   import { Canvas } from '@threlte/core';
-  import Scene from '@/components/Three/Gs/Scene.svelte';
+  import Scene from './Scene.svelte';
 </script>
 
 <!-- cameraを作用させるために必要 -->

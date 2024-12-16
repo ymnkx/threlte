@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
-import MaterialScene from '@/blocks/Material/MaterialScene.svelte';
+// import MaterialScene from '@/blocks/Material/MaterialScene.svelte';
+import Canvas from '@/components/Three/Material/Canvas.svelte';
 const title = 'Material';
 const description = 'Materialサンプル';
 ---
 
 <BaseLayout title={title} description={description}>
-  <MaterialScene client:load />
+  <Canvas client:load />
 </BaseLayout>

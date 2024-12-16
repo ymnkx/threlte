@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import ThreeCanvas from '@/components/Three/ThreeCanvas.svelte';
-  import Scene from '@/components/Three/CameraControl/Scene.svelte';
+  import Scene from './Scene.svelte';
 </script>
 
 <ThreeCanvas>

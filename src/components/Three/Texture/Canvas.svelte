@@ -1,6 +1,6 @@
 <script>
   import ThreeCanvas from '@/components/Three/ThreeCanvas.svelte';
-  import Scene from '@/components/Three/GLTF/Scene.svelte';
+  import Scene from './Scene.svelte';
 </script>
 
 <ThreeCanvas>

@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '@/layouts/Base.astro';
-import GLTFScene from '@/blocks/GLTF/GLTFScene.svelte';
+import Canvas from '@/components/Three/GLTF/Canvas.svelte';
 const title = 'Camera Control';
 const description = 'Camera Controlサンプル';
 ---
 
 <BaseLayout title={title} description={description}>
-  <GLTFScene client:load />
+  <Canvas client:load />
 </BaseLayout>
