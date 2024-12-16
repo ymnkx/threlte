@@ -45,7 +45,7 @@
 
   <T.Mesh position.y={1.2}>
     <T.SphereGeometry />
-    <T.MeshStandardMaterial {roughness} {metalness} />
+    <T.MeshStandardMaterial {roughness} {metalness} color="#999999" />
   </T.Mesh>
 
   <ContactShadows scale={10} blur={2} far={2.5} opacity={0.5} />

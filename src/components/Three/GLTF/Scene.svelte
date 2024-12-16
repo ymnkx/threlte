@@ -62,10 +62,3 @@
     <Label text="Loading..." anchorX="center" fontSize={0.1} />
   </T.Group>
 {/if}
-
-<!-- シンプルな書き方 -->
-<!-- <T.Mesh position={[0, 1.3, 0]}>
-  <GLTF
-    url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/DamagedHelmet/glTF/DamagedHelmet.gltf"
-  />
-</T.Mesh> -->
