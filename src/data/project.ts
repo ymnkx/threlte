@@ -1,6 +1,6 @@
 const data = {
-  siteName: 'TITLE',
-  siteDescription: 'Description',
+  siteName: 'Threlte Practice',
+  siteDescription: '',
   siteUrl: 'https://example.com/',
   baseUrl: '/', // ex: '/', '/sample/'
   publicDir: './public/',
