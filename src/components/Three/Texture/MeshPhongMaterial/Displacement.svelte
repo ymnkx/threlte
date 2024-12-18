@@ -1,10 +1,12 @@
 <script>
   import { T, useLoader } from '@threlte/core';
   import { DoubleSide, TextureLoader } from 'three';
+  import projectData from '@/data/project.ts';
+  const { baseUrl } = projectData;
 
   const textures = useLoader(TextureLoader).load({
-    map: '/assets/image/green.png',
-    displacementMap: '/assets/image/DisplacementMap.png',
+    map: `${baseUrl}assets/image/green.png`,
+    displacementMap: `${baseUrl}assets/image/DisplacementMap.png`,
   });
 </script>
 

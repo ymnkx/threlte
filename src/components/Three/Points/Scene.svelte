@@ -2,6 +2,8 @@
   import { T } from '@threlte/core';
   import { Align, OrbitControls, useTexture } from '@threlte/extras';
   import { BufferGeometry, Vector3, Float32BufferAttribute } from 'three';
+  import projectData from '@/data/project.ts';
+  const { baseUrl } = projectData;
 
   const p: number = 10;
   const r: number = 28;
@@ -96,7 +98,7 @@
   const lorenzPositions = generateLorenzAttractor(count, dt);
   const lorenzBufferGeometry = new BufferGeometry().setFromPoints(lorenzPositions);
   lorenzBufferGeometry.setAttribute('color', new Float32BufferAttribute(getColors(count), 3));
-  const alphaTexture = useTexture('/assets/image/AlphaMap.png'); // 丸くするため
+  const alphaTexture = useTexture(`${baseUrl}assets/image/AlphaMap.png`); // 丸くするため
 </script>
 
 <T.PerspectiveCamera makeDefault position={[300, 0, 0]} fov={15}>

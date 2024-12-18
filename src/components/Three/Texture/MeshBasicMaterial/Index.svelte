@@ -4,17 +4,20 @@
   import { DoubleSide } from 'three';
   import { mapType } from '../stores';
   import Frame from '../../Frame.svelte';
+  import projectData from '@/data/project.ts';
+  const { baseUrl } = projectData;
+
   $: texture =
     $mapType === 'orange'
-      ? useTexture('/assets/image/orange.png')
+      ? useTexture(`${baseUrl}assets/image/orange.png`)
       : $mapType === 'green'
-        ? useTexture('/assets/image/green.png')
+        ? useTexture(`${baseUrl}assets/image/green.png`)
         : Promise.resolve(null);
-  const displacementTexture = useTexture('/assets/image/DisplacementMap.png');
-  const normalTexture = useTexture('/assets/image/NormalMap.png');
-  const aoTexture = useTexture('/assets/image/AmbientOcclusionMap.png');
-  const alphaTexture = useTexture('/assets/image/AlphaMap.png');
-  const specularTexture = useTexture('/assets/image/SpecularMap.png');
+  const displacementTexture = useTexture(`${baseUrl}assets/image/DisplacementMap.png`);
+  const normalTexture = useTexture(`${baseUrl}assets/image/NormalMap.png`);
+  const aoTexture = useTexture(`${baseUrl}assets/image/AmbientOcclusionMap.png`);
+  const alphaTexture = useTexture(`${baseUrl}assets/image/AlphaMap.png`);
+  const specularTexture = useTexture(`${baseUrl}assets/image/SpecularMap.png`);
   const grid = 2.8;
   const offset = -0.1;
   const gap = 0.2;

@@ -1,6 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import * as GaussianSplats3D from '@mkkellogg/gaussian-splats-3d';
+  import projectData from '@/data/project.ts';
+  const { baseUrl } = projectData;
+
+  // どちらでもOK
+  // console.log(baseUrl);
+  // console.log(import.meta.env.BASE_URL);
 
   export let scene;
   export let camera;
@@ -16,7 +22,7 @@
       initialCameraPosition: [-6, 0, 0],
     });
     viewer
-      .addSplatScene('/assets/gs/brompton.ply', {
+      .addSplatScene(`${baseUrl}assets/gs/brompton.ply`, {
         scale: [1, -1, -1],
         showLoadingUI: false,
       })

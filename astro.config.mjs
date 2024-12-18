@@ -14,7 +14,7 @@ export default defineConfig({
   site: siteUrl,
   base: baseUrl,
   trailingSlash: 'always',
-  outDir: `./dist${baseUrl}`,
+  // outDir: `./dist${baseUrl}`,
   publicDir: publicDir,
   integrations: [mdx(), svelte()],
   server: {

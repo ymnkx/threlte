@@ -2,6 +2,8 @@
   import { T, useLoader } from '@threlte/core';
   import { DoubleSide, TextureLoader } from 'three';
   import { mapType, phongParams } from '../stores';
+  import projectData from '@/data/project.ts';
+  const { baseUrl } = projectData;
 
   $: textureList = () => {
     let result: {
@@ -12,22 +14,22 @@
       specularMap: string;
       map?: string;
     } = {
-      displacementMap: '/assets/image/DisplacementMap.png',
-      normalMap: '/assets/image/NormalMap.png',
-      aoMap: '/assets/image/AmbientOcclusionMap.png',
-      alphaMap: '/assets/image/AlphaMap.png',
-      specularMap: '/assets/image/SpecularMap.png',
+      displacementMap: `${baseUrl}assets/image/DisplacementMap.png`,
+      normalMap: `${baseUrl}assets/image/NormalMap.png`,
+      aoMap: `${baseUrl}assets/image/AmbientOcclusionMap.png`,
+      alphaMap: `${baseUrl}assets/image/AlphaMap.png`,
+      specularMap: `${baseUrl}assets/image/SpecularMap.png`,
     };
 
     if ($mapType === 'orange') {
       result = {
         ...result,
-        map: '/assets/image/orange.png',
+        map: `${baseUrl}assets/image/orange.png`,
       };
     } else if ($mapType === 'green') {
       result = {
         ...result,
-        map: '/assets/image/green.png',
+        map: `${baseUrl}assets/image/green.png`,
       };
     } else {
       result = {

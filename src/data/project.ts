@@ -1,8 +1,8 @@
 const data = {
   siteName: 'Threlte Practice',
   siteDescription: '',
-  siteUrl: 'https://example.com/',
-  baseUrl: '/', // ex: '/', '/sample/'
+  siteUrl: 'https://ymnkx.github.io',
+  baseUrl: '/threlte/', // ex: '/', '/sample/'
   publicDir: './public/',
   breakpoints: {
     sm: '0',

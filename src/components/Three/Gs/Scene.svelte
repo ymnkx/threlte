@@ -4,7 +4,7 @@
   import Label from '../Label.svelte';
   import { OrbitControls } from '@threlte/extras';
   const { scene, camera } = useThrelte();
-  console.log(camera.current);
+  // console.log(camera.current);
 </script>
 
 <Label
