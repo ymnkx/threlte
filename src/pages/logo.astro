@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/Base.astro';
+import Canvas from '@/components/Three/unt/Canvas.svelte';
+const title = 'unt';
+const description = '';
+---
+
+<BaseLayout title={title} description={description}>
+  <Canvas client:load />
+</BaseLayout>
