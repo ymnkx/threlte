@@ -8,6 +8,7 @@ const links = [
   { href: `${baseUrl}gltf/`, label: 'GLTF' },
   { href: `${baseUrl}points/`, label: 'points' },
   { href: `${baseUrl}gs/`, label: '3DGS' },
+  { href: `${baseUrl}logo/`, label: 'Logo' },
 ];
 
 export default links;
