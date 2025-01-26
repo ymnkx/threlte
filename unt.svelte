@@ -4,11 +4,11 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/unt.glb -t
 -->
 
 <script lang="ts">
-  import type * as THREE from 'three';
-  import { Group } from 'three';
-  import type { Snippet } from 'svelte';
-  import { T, type Props } from '@threlte/core';
-  import { useGltf, useGltfAnimations } from '@threlte/extras';
+  import type * as THREE from 'three'
+  import { Group } from 'three'
+  import type { Snippet } from 'svelte'
+  import { T, type Props } from '@threlte/core'
+  import { useGltf, useGltfAnimations } from '@threlte/extras'
 
   let {
     fallback,
@@ -17,32 +17,36 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/unt.glb -t
     ref = $bindable(),
     ...props
   }: Props<THREE.Group> & {
-    ref?: THREE.Group;
-    children?: Snippet<[{ ref: THREE.Group }]>;
-    fallback?: Snippet;
-    error?: Snippet<[{ error: Error }]>;
-  } = $props();
+    ref?: THREE.Group
+    children?: Snippet<[{ ref: THREE.Group }]>
+    fallback?: Snippet
+    error?: Snippet<[{ error: Error }]>
+  } = $props()
 
-  ref = new Group();
+  ref = new Group()
 
-  type ActionName = 'TAction' | 'UAction' | 'NAction';
+  type ActionName = 'TAction' | 'UAction' | 'NAction'
   type GLTFResult = {
     nodes: {
-      T: THREE.Mesh;
-      U: THREE.Mesh;
-      N: THREE.Mesh;
-    };
+      T: THREE.Mesh
+      U: THREE.Mesh
+      N: THREE.Mesh
+    }
     materials: {
-      ['Material.001']: THREE.MeshPhysicalMaterial;
-    };
-  };
+      ['Material.001']: THREE.MeshPhysicalMaterial
+    }
+  }
 
-  const gltf = useGltf<GLTFResult>(`${import.meta.env.BASE_URL}assets/gltf/unt.glb`);
+  const gltf = useGltf<GLTFResult>('/public/assets/gltf/unt.glb')
 
-  export const { actions, mixer } = useGltfAnimations<ActionName>(gltf, ref);
+  export const { actions, mixer } = useGltfAnimations<ActionName>(gltf, ref)
 </script>
 
-<T is={ref} dispose={false} {...props}>
+<T
+  is={ref}
+  dispose={false}
+  {...props}
+>
   {#await gltf}
     {@render fallback?.()}
   {:then gltf}

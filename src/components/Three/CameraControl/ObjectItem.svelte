@@ -1,44 +1,42 @@
 <script lang="ts">
-  import { T, forwardEventHandlers } from '@threlte/core';
+  import { T } from '@threlte/core';
   import { Outlines, useCursor } from '@threlte/extras';
-  export let name = '';
-  export let isMoved = false;
-  let isDown = false;
-  let outline = 'black';
+  let { name = '', isMoved = false, ...rest } = $props();
+  let isDown = $state(false);
+  let outline = $state('black');
   const { onPointerEnter, onPointerLeave } = useCursor();
-  const dispatchingComponent = forwardEventHandlers(); // これで配置した親の方でon:clickできる
 </script>
 
 <T.Mesh
+  {...rest}
   {name}
   {isMoved}
-  on:pointerenter={onPointerEnter}
-  on:pointerleave={onPointerLeave}
-  on:pointerenter={(e) => {
+  onpointerenter={(e) => {
     e.stopPropagation();
     outline = 'red';
     isMoved = false;
+    onPointerEnter(e);
   }}
-  on:pointerleave={(e) => {
+  onpointerleave={(e) => {
     e.stopPropagation();
     outline = 'black';
+    onPointerLeave(e);
   }}
-  on:pointerdown={(e) => {
+  onpointerdown={(e) => {
     e.stopPropagation();
     isDown = true;
     isMoved = false;
   }}
-  on:pointermove={(e) => {
+  onpointermove={(e) => {
     e.stopPropagation();
     if (!isDown || isMoved) return;
     isMoved = true;
     outline = 'black';
   }}
-  on:pointerup={(e) => {
+  onpointerup={(e) => {
     e.stopPropagation();
     isDown = false;
   }}
-  bind:this={$dispatchingComponent}
 >
   <T.BoxGeometry args={[1, 1, 1]} />
   <T.MeshStandardMaterial color="white" roughness={0.0} metalness={1.0} />

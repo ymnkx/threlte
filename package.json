@@ -55,7 +55,6 @@
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recess-order": "^6.0.0",
     "stylelint-config-standard-scss": "^14.0.0",
-    "svg-sprite": "^2.0.4",
-    "vituum": "^1.1.1"
+    "svg-sprite": "^2.0.4"
   }
 }

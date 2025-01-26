@@ -1,16 +1,16 @@
 <script>
   import { T, useTask } from '@threlte/core';
-  import { OrbitControls, Environment, Edges } from '@threlte/extras';
-  import Camera from '../Camera/Camera.svelte';
+  import { Environment, Edges } from '@threlte/extras';
+  // import Camera from '../Camera/Camera.svelte';
   import Frame from '../Frame.svelte';
   import { baseColor, edgeColor } from './stores.ts';
-  import { cameraControls } from '../Camera/stores.ts';
+  // import { cameraControls } from '../Camera/stores.ts';
   import { DoubleSide, MeshNormalMaterial, MeshBasicMaterial } from 'three';
   import { Pane, Button, Color, Checkbox } from 'svelte-tweakpane-ui';
 
   const grid = 2.8;
-  const initCameraPosition = [0, grid * 0.5, 50];
-  const initCameraLookAt = [0, grid * 0.5, 0];
+  // const initCameraPosition = [0, grid * 0.5, 50];
+  // const initCameraLookAt = [0, grid * 0.5, 0];
 
   let isEdge = true;
   let isRotation = true;
@@ -31,7 +31,7 @@
   <Button
     title="Reset Camera"
     on:click={() => {
-      if ($cameraControls) $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
+      // if ($cameraControls) $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
     }}
   />
   <Color bind:value={$baseColor} label="Base Color" />
@@ -45,10 +45,6 @@
   files={'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/equirectangular/venice_sunset_1k.hdr'}
   isBackground={false}
 />
-<T.PerspectiveCamera makeDefault position={[7.5, 2.5, 12.5]} fov={15} far={10000}>
-  <OrbitControls enableZoom={true} enableDamping target.y={1.5} />
-</T.PerspectiveCamera>
-<Camera {initCameraPosition} {initCameraLookAt} />
 
 <T.Group position.x={grid * -2} position.y={0}>
   <T.Group position.x={0} position.y={grid}>

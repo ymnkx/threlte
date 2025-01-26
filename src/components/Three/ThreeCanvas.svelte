@@ -1,9 +1,10 @@
 <script>
   import { Canvas } from '@threlte/core';
+  import { ACESFilmicToneMapping } from 'three';
 </script>
 
 <div class="canvas" id="js-canvas">
-  <Canvas>
+  <Canvas toneMapping={ACESFilmicToneMapping}>
     <slot></slot>
   </Canvas>
 </div>

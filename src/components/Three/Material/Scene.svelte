@@ -3,8 +3,6 @@
   import { Portal, Environment } from '@threlte/extras';
   import { Pane, Button, Color, Checkbox, Slider, Folder } from 'svelte-tweakpane-ui';
   import Object from './Object.svelte';
-  import Camera from '../Camera/Camera.svelte';
-  import { cameraControls } from '../Camera/stores.ts';
   import {
     isLightHelper,
     objectColor,
@@ -25,8 +23,6 @@
 
   const { scene } = useThrelte();
   let helperA: DirectionalLightHelper;
-  const initCameraPosition: [number, number, number] = [0, 2.8, 50];
-  const initCameraLookAt: [number, number, number] = [0, 2.8, 0];
   const grid = 2.8;
 </script>
 
@@ -34,7 +30,7 @@
   <Button
     title="Reset Camera"
     on:click={() => {
-      if ($cameraControls) $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
+      // if ($cameraControls) $cameraControls.setLookAt(...initCameraPosition, ...initCameraLookAt, true);
     }}
   />
   <Folder title="Scene">
@@ -66,16 +62,15 @@
 
 {#if $isDirectionalLight}
   <T.DirectionalLight position={[2, 4, 2]} castShadow={true} let:ref intensity={2}>
-    {#if $isLightHelper}
+    <!-- ここでエラー -->
+    <!-- {#if $isLightHelper}
       <Portal object={scene}>
         <T.DirectionalLightHelper args={[ref, 1]} bind:ref={helperA} />
       </Portal>
-    {/if}
+    {/if} -->
   </T.DirectionalLight>
 {/if}
 <T.AmbientLight color={$ambientColor} />
-
-<Camera {initCameraPosition} {initCameraLookAt} />
 
 <T.Group position.x={grid * -1.5} position.y={0}>
   <T.Group position.x={0} position.y={grid}>
