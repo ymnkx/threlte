@@ -1,12 +1,12 @@
 <script lang="ts">
   import { T } from '@threlte/core';
-  import { onMount, tick } from 'svelte';
+  import { onMount } from 'svelte';
   import { ContactShadows } from '@threlte/extras';
-  import { Pane, Button, Checkbox } from 'svelte-tweakpane-ui';
+  import { Pane, Checkbox } from 'svelte-tweakpane-ui';
   import Camera from '../Camera/Camera.svelte';
   import Unt from './Unt.svelte';
-  import { isWireFrame } from './stores.ts';
-  import { LoopOnce, MeshPhongMaterial, Color } from 'three';
+  import { LoopOnce } from 'three';
+  import { objectState } from './state.svelte.js';
 
   let controls: any = $state();
   const position = [0, 6, 80];
@@ -40,26 +40,44 @@
     play();
   });
 
+  let isClickCancelled = $state(false);
   onMount(() => {
     mixer.timeScale = 1.5;
     if (controls) controls.setLookAt(...position_zoom, ...target, true);
+
+    const canvasElement = document.querySelector('#js-canvas');
+    canvasElement?.addEventListener(
+      'click',
+      () => {
+        if (!isClickCancelled) {
+          play();
+        }
+      },
+      false,
+    );
+    canvasElement?.addEventListener(
+      'mousedown',
+      () => {
+        isClickCancelled = false;
+      },
+      false,
+    );
+    canvasElement?.addEventListener(
+      'mousemove',
+      () => {
+        isClickCancelled = true;
+      },
+      false,
+    );
   });
 </script>
 
 <Pane title="Control" position="fixed" y={10}>
-  <Button
-    title="Reset Camera"
-    on:click={() => {
-      if (controls) controls.setLookAt(...position, ...target, true);
-    }}
-  />
-  <Checkbox label="WireFrame" bind:value={$isWireFrame} />
+  <Checkbox label="WireFrame" bind:value={objectState.isWireFrame} />
 </Pane>
 
 <T.AmbientLight color="#ffffff" intensity={3} />
 <T.DirectionalLight position={[-3, 6, 3]} castShadow={false} let:ref intensity={3} />
-
-<!-- <Camera initCameraPosition={initCameraPositionFirst} {initCameraLookAt} /> -->
 
 <Camera bind:controls {position} {target} />
 

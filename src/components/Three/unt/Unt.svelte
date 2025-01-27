@@ -5,10 +5,11 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/unt.glb -t
 
 <script lang="ts">
   import type * as THREE from 'three';
-  import { Group } from 'three';
+  import { Group, MeshPhongMaterial, Color } from 'three';
   import type { Snippet } from 'svelte';
   import { T, type Props } from '@threlte/core';
   import { useGltf, useGltfAnimations } from '@threlte/extras';
+  import { objectState } from './state.svelte.js';
 
   let {
     fallback,
@@ -37,6 +38,14 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/unt.glb -t
     };
   };
 
+  // v8でderiverdが必要になった
+  const material = $derived(
+    new MeshPhongMaterial({
+      color: new Color('rgb(92, 138, 57)'),
+      wireframe: objectState.isWireFrame,
+    }),
+  );
+
   const gltf = useGltf<GLTFResult>(`${import.meta.env.BASE_URL}assets/gltf/unt.glb`);
 
   export const { actions, mixer } = useGltfAnimations<ActionName>(gltf, ref);
@@ -47,24 +56,9 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/unt.glb -t
     {@render fallback?.()}
   {:then gltf}
     <T.Group name="Scene">
-      <T.Mesh
-        name="T"
-        geometry={gltf.nodes.T.geometry}
-        material={gltf.materials['Material.001']}
-        position={[0, 5, 0]}
-      />
-      <T.Mesh
-        name="U"
-        geometry={gltf.nodes.U.geometry}
-        material={gltf.materials['Material.001']}
-        position={[0, 5, 0]}
-      />
-      <T.Mesh
-        name="N"
-        geometry={gltf.nodes.N.geometry}
-        material={gltf.materials['Material.001']}
-        position={[0, 5, 0]}
-      />
+      <T.Mesh name="T" geometry={gltf.nodes.T.geometry} {material} position={[0, 5, 0]} />
+      <T.Mesh name="U" geometry={gltf.nodes.U.geometry} {material} position={[0, 5, 0]} />
+      <T.Mesh name="N" geometry={gltf.nodes.N.geometry} {material} position={[0, 5, 0]} />
     </T.Group>
   {:catch err}
     {@render error?.({ error: err })}
