@@ -4,12 +4,12 @@
   import { OrbitControls, Sky, Grid, Gizmo, ContactShadows } from '@threlte/extras';
   import { Folder, Pane, Slider } from 'svelte-tweakpane-ui';
 
-  $: elevation = 2;
-  $: azimuth = 180;
-  $: turbidity = 10;
-  $: rayleigh = 3;
-  $: roughness = 0.1;
-  $: metalness = 1;
+  let elevation = $state(2);
+  let azimuth = $state(180);
+  let turbidity = $state(10);
+  let rayleigh = $state(3);
+  let roughness = $state(0.1);
+  let metalness = $state(1);
 </script>
 
 <ThreeCanvas>
