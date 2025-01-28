@@ -1,41 +1,20 @@
 <script lang="ts">
   import { T } from '@threlte/core';
   import { Outlines, useCursor } from '@threlte/extras';
-  let { name = '', isMoved = false, ...rest } = $props();
-  let isDown = $state(false);
-  let outline = $state('black');
-  const { onPointerEnter, onPointerLeave } = useCursor();
+  let { name = '', ...rest } = $props();
+  const { hovering, onPointerEnter, onPointerLeave } = useCursor();
+  let outline = $derived($hovering ? 'red' : 'black');
 </script>
 
 <T.Mesh
   {...rest}
   {name}
-  {isMoved}
   onpointerenter={(e) => {
     e.stopPropagation();
-    outline = 'red';
-    isMoved = false;
-    onPointerEnter(e);
+    onPointerEnter();
   }}
-  onpointerleave={(e) => {
-    e.stopPropagation();
-    outline = 'black';
-    onPointerLeave(e);
-  }}
-  onpointerdown={(e) => {
-    e.stopPropagation();
-    isDown = true;
-    isMoved = false;
-  }}
-  onpointermove={(e) => {
-    e.stopPropagation();
-    if (!isDown || isMoved) return;
-    isMoved = true;
-    outline = 'black';
-  }}
-  onpointerup={(e) => {
-    e.stopPropagation();
-    isDown = false;
+  onpointerleave={() => {
+    onPointerLeave();
   }}
 >
   <T.BoxGeometry args={[1, 1, 1]} />

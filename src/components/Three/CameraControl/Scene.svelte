@@ -3,6 +3,7 @@
   import ThreeCanvas from '@/components/Three/ThreeCanvas.svelte';
   import ObjectGruop from './ObjectGruop.svelte';
   import Camera from '../Camera/Camera.svelte';
+  import { Pane, Button } from 'svelte-tweakpane-ui';
 
   type CameraPayload = {
     position: {
@@ -27,6 +28,15 @@
 </script>
 
 <ThreeCanvas>
+  <Pane title="Control" position="fixed" y={10}>
+    <Button
+      title="Reset Camera"
+      on:click={() => {
+        controls.setTarget(...target, true);
+        controls.setPosition(...position, true);
+      }}
+    />
+  </Pane>
   <Sky elevation={1} />
   <Grid
     position.y={-0.001}
