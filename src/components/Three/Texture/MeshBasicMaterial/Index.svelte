@@ -2,17 +2,18 @@
   import { T } from '@threlte/core';
   import { useTexture } from '@threlte/extras';
   import { DoubleSide } from 'three';
-  import { mapType } from '../stores';
+  import { TextureSettings } from '../texture.svelte.ts';
   import Frame from '../../Frame.svelte';
   import projectData from '@/data/project.ts';
   const { baseUrl } = projectData;
 
-  $: texture =
-    $mapType === 'orange'
+  let texture = $derived(
+    TextureSettings.mapType === 'orange'
       ? useTexture(`${baseUrl}assets/image/orange.png`)
-      : $mapType === 'green'
+      : TextureSettings.mapType === 'green'
         ? useTexture(`${baseUrl}assets/image/green.png`)
-        : Promise.resolve(null);
+        : Promise.resolve(null),
+  );
   const displacementTexture = useTexture(`${baseUrl}assets/image/DisplacementMap.png`);
   const normalTexture = useTexture(`${baseUrl}assets/image/NormalMap.png`);
   const aoTexture = useTexture(`${baseUrl}assets/image/AmbientOcclusionMap.png`);
