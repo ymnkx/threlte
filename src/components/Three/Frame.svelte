@@ -3,6 +3,8 @@
   import { MeshLineGeometry } from '@threlte/extras';
   import { Vector3 } from 'three';
   import Label from './Label.svelte';
+  let { label = 'Frame', offset = 0, children } = $props();
+
   const settings = {
     size: 2,
     padding: 0.4,
@@ -15,8 +17,6 @@
     new Vector3(width, height, 0),
     new Vector3(0, height, 0),
   ];
-  export let label = 'Frame';
-  export let offset = 0;
 </script>
 
 <T.Line>
@@ -26,14 +26,5 @@
 <Label text={label} position={{ x: 0.075, y: height - 0.15, z: 0 }} />
 
 <T.Group position.x={width * 0.5} position.y={height * 0.5 - 0.1} position.z={offset}>
-  <slot></slot>
+  {@render children()}
 </T.Group>
-
-<!-- <T.Mesh>
-  <MeshLineGeometry {points} />
-  <MeshLineMaterial
-    width={0.5}
-    color="#fe3d00"
-  />
-</T.Mesh> -->
-<!-- MeshLineMaterialがエラー -->
