@@ -1,14 +1,14 @@
 <script>
   import { T } from '@threlte/core';
-  import { objectColor, phongParams } from './stores';
+  import { MaterialSettings } from './material.svelte.ts';
 </script>
 
 <T.Mesh>
   <T.SphereGeometry />
   <T.MeshPhongMaterial
-    color={$objectColor}
-    shininess={$phongParams.shininess}
-    specular={$phongParams.color}
+    color={MaterialSettings.objectColor}
+    shininess={MaterialSettings.phongParams.shininess}
+    specular={MaterialSettings.phongParams.color}
     reflectivity={1}
   />
 </T.Mesh>

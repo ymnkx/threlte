@@ -1,11 +1,11 @@
 <script lang="ts">
   import { T, useLoader } from '@threlte/core';
   import { DoubleSide, TextureLoader } from 'three';
-  import { mapType, standardParams } from '../stores';
+  import { TextureSettings } from '../texture.svelte.ts';
   import projectData from '@/data/project.ts';
   const { baseUrl } = projectData;
 
-  $: textureList = () => {
+  let textureList = $derived(() => {
     let result: {
       displacementMap: string;
       normalMap: string;
@@ -19,12 +19,12 @@
       alphaMap: `${baseUrl}assets/image/AlphaMap.png`,
     };
 
-    if ($mapType === 'orange') {
+    if (TextureSettings.mapType === 'orange') {
       result = {
         ...result,
         map: `${baseUrl}assets/image/orange.png`,
       };
-    } else if ($mapType === 'green') {
+    } else if (TextureSettings.mapType === 'green') {
       result = {
         ...result,
         map: `${baseUrl}assets/image/green.png`,
@@ -35,10 +35,10 @@
       };
     }
     return result;
-  };
+  });
 
   const { load } = useLoader(TextureLoader);
-  $: textures = load(textureList());
+  let textures = $derived(load(textureList()));
 </script>
 
 {#if $textures}
@@ -49,8 +49,8 @@
       {...$textures}
       displacementScale={1}
       displacementBias={-0.35}
-      metalness={$standardParams.metalness}
-      roughness={$standardParams.roughness}
+      metalness={TextureSettings.standardParams.metalness}
+      roughness={TextureSettings.standardParams.roughness}
       opacity={1}
       transparent
     />

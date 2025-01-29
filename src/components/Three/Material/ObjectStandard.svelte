@@ -1,13 +1,13 @@
 <script>
   import { T } from '@threlte/core';
-  import { objectColor, standardParams } from './stores';
+  import { MaterialSettings } from './material.svelte.ts';
 </script>
 
 <T.Mesh>
   <T.SphereGeometry />
   <T.MeshStandardMaterial
-    color={$objectColor}
-    metalness={$standardParams.metalness}
-    roughness={$standardParams.roughness}
+    color={MaterialSettings.objectColor}
+    metalness={MaterialSettings.standardParams.metalness}
+    roughness={MaterialSettings.standardParams.roughness}
   />
 </T.Mesh>

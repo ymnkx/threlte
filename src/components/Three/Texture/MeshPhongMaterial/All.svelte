@@ -1,11 +1,11 @@
 <script lang="ts">
   import { T, useLoader } from '@threlte/core';
   import { DoubleSide, TextureLoader } from 'three';
-  import { mapType, phongParams } from '../stores';
+  import { TextureSettings } from '../texture.svelte.ts';
   import projectData from '@/data/project.ts';
   const { baseUrl } = projectData;
 
-  $: textureList = () => {
+  let textureList = $derived(() => {
     let result: {
       displacementMap: string;
       normalMap: string;
@@ -21,12 +21,12 @@
       specularMap: `${baseUrl}assets/image/SpecularMap.png`,
     };
 
-    if ($mapType === 'orange') {
+    if (TextureSettings.mapType === 'orange') {
       result = {
         ...result,
         map: `${baseUrl}assets/image/orange.png`,
       };
-    } else if ($mapType === 'green') {
+    } else if (TextureSettings.mapType === 'green') {
       result = {
         ...result,
         map: `${baseUrl}assets/image/green.png`,
@@ -37,10 +37,10 @@
       };
     }
     return result;
-  };
+  });
 
   const { load } = useLoader(TextureLoader);
-  $: textures = load(textureList());
+  let textures = $derived(load(textureList()));
 </script>
 
 {#if $textures}
@@ -51,8 +51,8 @@
       {...$textures}
       displacementScale={1}
       displacementBias={-0.35}
-      shininess={$phongParams.shininess}
-      specular={$phongParams.color}
+      shininess={TextureSettings.phongParams.shininess}
+      specular={TextureSettings.phongParams.color}
       opacity={1}
       transparent
     />

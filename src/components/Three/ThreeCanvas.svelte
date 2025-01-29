@@ -1,10 +1,12 @@
 <script>
   import { Canvas } from '@threlte/core';
+  import { ACESFilmicToneMapping } from 'three';
+  let { children } = $props();
 </script>
 
 <div class="canvas" id="js-canvas">
-  <Canvas>
-    <slot></slot>
+  <Canvas toneMapping={ACESFilmicToneMapping}>
+    {@render children()}
   </Canvas>
 </div>
 
