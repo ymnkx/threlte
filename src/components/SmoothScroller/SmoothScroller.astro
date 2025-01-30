@@ -1,0 +1,55 @@
+<>
+  <slot />
+</>
+
+<script>
+  import Lenis from 'lenis';
+
+  (() => {
+    const lenis = new Lenis();
+    const raf = (time: any) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    // const links = Array.from(document.querySelectorAll('a[href^="#"]'));
+    // links.forEach((link) => {
+    //   link.addEventListener('click', (ev) => {
+    //     ev.preventDefault();
+    //     const target_id = link.getAttribute('href');
+    //     if (!target_id) return;
+    //     const targetElement: HTMLElement | null = document.querySelector(target_id);
+    //     if (!targetElement) return;
+
+    //     const { scrollMarginTop } = getComputedStyle(targetElement);
+    //     lenis.scrollTo(targetElement, {
+    //       offset: -1 * Number(scrollMarginTop.replace('px', '')),
+    //       duration: 0.75,
+    //     });
+    //   });
+    // });
+  })();
+</script>
+
+<style is:global>
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+</style>

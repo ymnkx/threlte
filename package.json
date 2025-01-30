@@ -27,6 +27,7 @@
     "astro": "^5.1.9",
     "camera-controls": "^2.9.0",
     "fs-extra": "^11.3.0",
+    "lenis": "^1.1.20",
     "sharp": "^0.33.5",
     "svelte": "^5.1.16",
     "svelte-tweakpane-ui": "^1.5.1",

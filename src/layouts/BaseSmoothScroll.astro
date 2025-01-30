@@ -1,0 +1,24 @@
+---
+import '@/styles/base.scss';
+import BaseHead from '@/layouts/Base/BaseHead.astro';
+import BaseLayout from '@/layouts/Base/BaseLayout.astro';
+import SmoothScroller from '@/components/SmoothScroller/SmoothScroller.astro';
+type Props = {
+  title: string;
+  description: string;
+};
+const { title, description } = Astro.props;
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <SmoothScroller>
+      <BaseLayout>
+        <slot />
+      </BaseLayout>
+    </SmoothScroller>
+  </body>
+</html>
