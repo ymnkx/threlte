@@ -6,7 +6,9 @@
 
 <div class="canvas" id="js-canvas">
   <Canvas toneMapping={ACESFilmicToneMapping}>
-    {@render children()}
+    {#if children}
+      {@render children()}
+    {/if}
   </Canvas>
 </div>
 
