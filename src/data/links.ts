@@ -9,6 +9,7 @@ const links = [
   { href: `${baseUrl}points/`, label: 'points' },
   { href: `${baseUrl}gs/`, label: '3DGS' },
   { href: `${baseUrl}logo/`, label: 'Logo' },
+  { href: `${baseUrl}camera-animation/`, label: 'camera animation' },
 ];
 
 export default links;

@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import imports from 'vituum/plugins/imports.js';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import d from './src/data/project.ts';
@@ -26,16 +25,6 @@ export default defineConfig({
     inlineStylesheets: 'never', // css外部ファイル化のため
   },
   vite: {
-    plugins: [
-      imports({
-        filenamePattern: {
-          '+.css': [],
-          '+.scss': 'src/styles',
-          '+.js': [],
-          '+.ts': 'src/scripts',
-        },
-      }),
-    ],
     resolve: {
       alias: {
         '@/': `${path.resolve(__dirname, 'src')}/`,

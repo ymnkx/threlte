@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@/layouts/BaseSmoothScroll.astro';
+import Canvas from '@/components/Three/CameraAnimation/Canvas.svelte';
+const title = 'camera-animation';
+const description = '';
+---
+
+<BaseLayout title={title} description={description}>
+  <Canvas client:load />
+  <div class="sample"></div>
+</BaseLayout>
+
+<style>
+  .sample {
+    height: 1000vh;
+  }
+</style>
