@@ -1,3 +1,3 @@
 export const CameraAnimationSettings = $state({
-  isToonMaterial: false,
+  isToonMaterial: true,
 });

@@ -48,7 +48,7 @@ Command: npx @threlte/gltf@3.0.0 ./public/assets/gltf/greenman.glb -t
     black: new MeshToonMaterial({ color: 0x333333 }),
   };
 
-  const gltf = useGltf<GLTFResult>(`${import.meta.env.BASE_URL}assets/gltf/greenman.glb`);
+  const gltf = useGltf<GLTFResult>(`${import.meta.env.BASE_URL}assets/gltf/greenman2.glb`);
   let materials = $derived($gltf?.materials);
 
   export const { actions, mixer } = useGltfAnimations<ActionName>(gltf, ref);

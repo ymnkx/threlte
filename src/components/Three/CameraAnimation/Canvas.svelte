@@ -7,6 +7,7 @@
   import { onMount } from 'svelte';
   import { Pane, Checkbox } from 'svelte-tweakpane-ui';
   import { CameraAnimationSettings } from './cameraAnimation.svelte.ts';
+  import Stats from '@/components/Three/Stats.svelte';
 
   let object = $state();
   const actions = $derived(object?.actions);
@@ -62,6 +63,7 @@
   <!-- model -->
   <Greenman bind:this={object} />
   <ContactShadows scale={10} blur={2} far={2.5} opacity={0.25} />
+  <Stats />
 </ThreeCanvas>
 
 <svelte:window bind:scrollY={y} bind:innerHeight={h} />
